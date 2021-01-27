@@ -50,25 +50,25 @@ describe('Date', function () {
 
         it('Conversion heure hiver', function () {
             let result = date.horodateToDate('H081225223518')
-            assert.strictEqual(result.date.toLocaleString('fr-FR', {timeZone: 'Europe/Paris'}), '25/12/2008 à 22:35:18');
+            assert.strictEqual(result.date.toLocaleString('en-US', {timeZone: 'Europe/Paris'}), '12/25/2008, 10:35:18 PM');
             assert.strictEqual(result.date_degrade, false);
         });
 
         it('Conversion heure été', function () {
             let result = date.horodateToDate('E090714074553')
-            assert.strictEqual(result.date.toLocaleString('fr-FR', {timeZone: 'Europe/Paris'}), '14/07/2009 à 07:45:53');
+            assert.strictEqual(result.date.toLocaleString('en-US', {timeZone: 'Europe/Paris'}), '7/14/2009, 7:45:53 AM');
             assert.strictEqual(result.date_degrade, false);
         });
 
         it('Conversion heure hiver mode dégradé', function () {
             let result = date.horodateToDate('h081225223518')
-            assert.strictEqual(result.date.toLocaleString('fr-FR', {timeZone: 'Europe/Paris'}), '25/12/2008 à 22:35:18');
+            assert.strictEqual(result.date.toLocaleString('en-US', {timeZone: 'Europe/Paris'}), '12/25/2008, 10:35:18 PM');
             assert.strictEqual(result.date_degrade, true);
         });
 
         it('Conversion heure été mode dégradé', function () {
             let result = date.horodateToDate('e090714074553')
-            assert.strictEqual(result.date.toLocaleString('fr-FR', {timeZone: 'Europe/Paris'}), '14/07/2009 à 07:45:53');
+            assert.strictEqual(result.date.toLocaleString('en-US', {timeZone: 'Europe/Paris'}), '7/14/2009, 7:45:53 AM');
             assert.strictEqual(result.date_degrade, true);
         });
 
