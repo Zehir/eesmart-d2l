@@ -21,14 +21,9 @@ const RESPONSE_TYPE_OFFSET = 0x80;
 const GET_FRIMWARE_API_URL = "https://d2lapi.sicame.io/api/D2L/D2Ls/D2LFirmware";
 
 module.exports = class {
-
-    key;
-    iv;
-    headers = {};
-    buffer;
-    requestBuffer;
-
+    
     constructor(key = undefined, iv = undefined) {
+        this.headers = {};
         this.setKeys(key, iv)
     }
 
