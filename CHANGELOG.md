@@ -6,6 +6,8 @@ Le format est basé sur [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 et ce projet adhère au [Versionnage Sémantique](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+
+## [1.0.2] - 2021-01-27 ![Relative date](https://img.shields.io/date/1611760356?label=)
 ### Changement
 - Suppression de la limitation privées de certaines méthodes.
 
