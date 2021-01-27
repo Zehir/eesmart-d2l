@@ -78,3 +78,6 @@ switch (d2l.getPayloadType()) {
 - [Documentation Enedis](https://www.enedis.fr/sites/default/files/Enedis-NOI-CPT_54E.pdf) - description complète des données envoyés par le Linky via le D2L.
 - [Notice d'installation D2L](http://eesmart.fr/wp-content/uploads/eeSmart-D2L-Notice-dinstallation.pdf) - comment configurer votre D2L.
 - [Discord](https://discord.gg/qTd363NKeu) - vous pouvez nous rejoindre sur discord.
+
+## Projets liés
+- [Node-red-contrib-eesmart-d2l](https://github.com/Zehir/node-red-contrib-eesmart-d2l) - utilisation avec [Node-Red](https://nodered.org/).
