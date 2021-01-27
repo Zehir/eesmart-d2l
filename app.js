@@ -21,7 +21,7 @@ const RESPONSE_TYPE_OFFSET = 0x80;
 const GET_FRIMWARE_API_URL = "https://d2lapi.sicame.io/api/D2L/D2Ls/D2LFirmware";
 
 module.exports = class {
-    
+
     constructor(key = undefined, iv = undefined) {
         this.headers = {};
         this.setKeys(key, iv)
@@ -60,7 +60,7 @@ module.exports = class {
             error.code = "ERR_PARSE_REQUEST_BAD_FORMAT";
             throw error;
         }
-        this.#parseUnencryptedHeaders();
+        this.parseUnencryptedHeaders();
 
         // Check if frame is complete
         if (this.headers.frameSize !== this.buffer.length) {
@@ -84,11 +84,11 @@ module.exports = class {
         // Decrypt Buffer
         this.buffer = Decipher(this.buffer, this.key, this.iv)
 
-        this.#parseEncryptedHeaders();
+        this.parseEncryptedHeaders();
 
         if (skipChecks === false) {
             // Check CRC
-            if (this.headers.crc16.readUIntLE(0, 2) !== this.#generateCRC(this.buffer)) {
+            if (this.headers.crc16.readUIntLE(0, 2) !== this.generateCRC(this.buffer)) {
                 let error = new Error("Impossible de lire les données, la somme de contrôle est invalide. Veuillez vérifier les clés.");
                 error.code = "ERR_PARSE_REQUEST_BAD_CRC";
                 throw error;
@@ -103,7 +103,7 @@ module.exports = class {
 
     }
 
-    #parseUnencryptedHeaders() {
+    parseUnencryptedHeaders() {
         let headers = (new Parser()
                 .endianess("little")
                 // Version du protocole, toujours égale à 3
@@ -130,7 +130,7 @@ module.exports = class {
     }
 
 
-    #parseEncryptedHeaders() {
+    parseEncryptedHeaders() {
 
         let headers = (new Parser()
                 .endianess("little")
@@ -247,7 +247,7 @@ module.exports = class {
         buffer.writeUIntLE(this.headers.payloadType + RESPONSE_TYPE_OFFSET, 36, 2) // payloadType + response
 
         // Generate CRC at the end
-        buffer.writeUIntLE(this.#generateCRC(buffer), 32, 2) // crc16
+        buffer.writeUIntLE(this.generateCRC(buffer), 32, 2) // crc16
 
         return Cipher(buffer, this.key, this.iv);
     }
@@ -286,7 +286,7 @@ module.exports = class {
 
     }
 
-    #generateCRC(buffer) {
+    generateCRC(buffer) {
         return CRC(Buffer.concat([buffer.subarray(0, 32), buffer.subarray(34)]));
     }
 
