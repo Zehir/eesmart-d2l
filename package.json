@@ -19,7 +19,7 @@
     "url": "https://github.com/Zehir/eesmart-d2l/issues"
   },
   "dependencies": {
-    "binary-parser": "^1.7.0"
+    "binary-parser": "^2.3.0"
   },
   "devDependencies": {
     "mocha": "^8.2.1",
