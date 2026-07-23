@@ -1,0 +1,40 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the README at:
+// https://github.com/devcontainers/templates/tree/main/src/typescript-node
+{
+	"name": "Node.js & TypeScript",
+	"build": {
+		"dockerfile": "Dockerfile"
+	},
+	"customizations": {
+		"vscode": {
+			// Add the IDs of extensions you want installed when the container is created.
+			"extensions": [
+				"antfu.iconify",
+				"antfu.vite",
+				"antfu.goto-alias",
+				"dbaeumer.vscode-eslint",
+				"streetsidesoftware.code-spell-checker",
+				"Tobermory.es6-string-html",
+				"mhutchie.git-graph",
+				"eamodio.gitlens",
+				"GitHub.copilot-chat",
+				"statelyai.stately-vscode",
+				"yoavbls.pretty-ts-errors",
+				"ZixuanChen.vitest-explorer",
+				"christian-kohler.npm-intellisense",
+				"MylesMurphy.prettify-ts",
+				"github.vscode-github-actions"
+			]
+		}
+	},
+	"features": {
+		"ghcr.io/devcontainers/features/docker-in-docker:2": {}
+	},
+	// Use 'forwardPorts' to make a list of ports inside the container available locally.
+	// "forwardPorts": [],
+	// Use 'postCreateCommand' to run commands after the container is created.
+	"postCreateCommand": "pnpm install && echo alias ll=\\'ls -al\\' >> /home/node/.bashrc",
+	// Comment out to connect as root instead. More info: https://aka.ms/vscode-remote/containers/non-root.
+	"remoteUser": "node",
+	"appPort": []
+}
